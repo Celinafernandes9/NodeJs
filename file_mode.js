@@ -11,6 +11,7 @@ const fs = require("fs");
 // });
 
 // append file
+// in append mode if the file is not create it will create automatically
 
 fs.open("example.txt", "a+", (err, data) => {
   if (err) {
