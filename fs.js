@@ -22,4 +22,19 @@ http.createServer((req, res)=>{
     // })
 
 
+// Delete operation
+
+// fs.unlink("example.txt", (err)=>{
+//     if(err) throw err
+//     console.log("file deleted");
+//     return res.end()
+// }) 
+
+// rename operation
+
+fs.rename("index.html", "demo.html", (err, data)=>{
+    res.writeHead(200, {'content-type':'text/plain'});
+    res.write(data)
+    res.end();
+})
 }).listen(4000); 
