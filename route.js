@@ -1,6 +1,7 @@
 const express = require('express').Router();
 const route = require('express').Router();
 
+// importing module file
 const userModel = require('./module');
 
 // to register a data
