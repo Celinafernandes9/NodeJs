@@ -1,7 +1,6 @@
 const express = require('express').Router();
 const route = require('express').Router();
 
-// importing module file
 const userModel = require('./module');
 
 // to register a data
@@ -46,6 +45,17 @@ route.post('/update', async (req, res)=>{
     try {
         const update = await userModel.findByIdAndUpdate(_id, req.body)
         res.send("Updated")
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+// to find specific user data
+route.get('/showOne', async (req, res)=>{
+    let id = req.query.id
+    try {
+       const show = await userModel.findById(id) 
+       res.send(show)
     } catch (error) {
         console.log(error);
     }
