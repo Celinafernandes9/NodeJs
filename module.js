@@ -11,6 +11,11 @@ const Schema = new mongoose.Schema({
     required: true
   },
 
+  password:{
+    type: string,
+    required:true
+  },
+  
   mobile: {
     type: Number,
     required: true,
