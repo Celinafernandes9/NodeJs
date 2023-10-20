@@ -1,5 +1,6 @@
 const express = require("express").Router();
 const route = require("express").Router();
+// to encrypt password
 const bcrypt = require("bcrypt");
 
 const userModel = require("./schema");
@@ -8,6 +9,8 @@ const {login} = require('./validation')
 
 // to register a data
 route.post("/register", async (req, res) => {
+
+//encrypting the password
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(req.body.password, salt);
 
@@ -18,6 +21,8 @@ route.post("/register", async (req, res) => {
     password: hash
   });
   try {
+
+    // validation
     const { error } = register(req.body);
     if (error) return res.status(404).send(error.message);
 
