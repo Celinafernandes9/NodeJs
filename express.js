@@ -6,13 +6,17 @@ const mongoose = require('mongoose');
 
 app.use(express.json());
 const router = require('./route');
-app.use("/user", router);
 
+app.use("/user", router);
+const env = require('dotenv')
+env.config()
 // app.use(express.static('public'))
 
+const postroute = require('./token_post');
+app.use("/authoriseduser", postroute)
 // connect to MongoDB database using Mongoose
 mongoose.set("strictQuery", true)
-mongoose.connect("mongodb+srv://Celina:qazplm@cluster0.mvphbd4.mongodb.net/Nodejs?retryWrites=true&w=majority")
+mongoose.connect(process.env.db_connection)
 
 .then(()=>{
     console.log("connected to MongoDB");
